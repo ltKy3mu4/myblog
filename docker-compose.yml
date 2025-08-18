@@ -7,7 +7,7 @@ services:
       - "8080:8080"
       - "8000:8000"
     environment:
-      DATABASE_URL: jdbc:postgresql://postgres:5432/yacourse
+      DATABASE_URL: jdbc:postgresql://postgres:5432/ya
       DATABASE_USERNAME: postgres
       DATABASE_PASSWORD: postgres
     networks:
@@ -22,13 +22,13 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: yacourse
+      POSTGRES_DB: ya
     ports:
       - "5433:5432"
     networks:
       - blog-net
     volumes:
-      - postgres-data:/var/lib/posgresql/data
+      - postgres-data-new:/var/lib/posgresql/data
     healthcheck:
       test: [ "CMD", "pg_isready", "-d", "postgres", "-U", "postgres" ]
       interval: 10s
@@ -37,6 +37,6 @@ services:
       start_period: 5s
 
 volumes:
-  postgres-data:
+  postgres-data-new:
 networks:
   blog-net:

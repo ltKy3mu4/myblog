@@ -22,7 +22,7 @@ create table if not exists tags
     name varchar(100) not null unique
 );
 
-create index name_idx on tags (name);
+create index tags_name_idx on tags (name);
 
 create table if not exists posts_tags
 (
@@ -33,9 +33,9 @@ create table if not exists posts_tags
     constraint tag_id_fk foreign key (tag_id) references tags (id)
 );
 
-create index post_id_idx on posts_tags (post_id);
+create index posts_tags_post_id_idx  on posts_tags (post_id);
+create index posts_tags_tag_id_idx  on posts_tags (tag_id);
 
-create index tag_id_idx on posts_tags (tag_id);
 
 create table if not exists images
 (
@@ -48,4 +48,4 @@ create table if not exists images
 
 );
 
-create index post_id_idx on images (post_id);
+create index images_post_id_idx  on images (post_id);
