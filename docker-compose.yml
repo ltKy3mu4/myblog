@@ -1,19 +1,19 @@
 services:
-  myblog:
-    container_name: myblog
-    restart: on-failure
-    build: .
-    ports:
-      - "8080:8080"
-      - "8000:8000"
-    environment:
-      DATABASE_URL: jdbc:postgresql://postgres:5432/ya
-      DATABASE_USERNAME: postgres
-      DATABASE_PASSWORD: postgres
-    networks:
-      - blog-net
-    depends_on:
-      - postgres
+#  myblog:
+#    container_name: myblog
+#    restart: on-failure
+#    build: .
+#    ports:
+#      - "8080:8080"
+#      - "8000:8000"
+#    environment:
+#      DATABASE_URL: jdbc:postgresql://postgres:5432/ya
+#      DATABASE_USERNAME: postgres
+#      DATABASE_PASSWORD: postgres
+#    networks:
+#      - blog-net
+#    depends_on:
+#      - postgres
 
   postgres:
     container_name: postgres
@@ -22,7 +22,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: ya
+      POSTGRES_DB: blogdb
     ports:
       - "5433:5432"
     networks:
