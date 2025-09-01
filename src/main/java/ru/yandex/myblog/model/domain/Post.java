@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,8 +19,8 @@ public class Post {
     private int likesCount;
 
     private ImageBlob image;
-    private List<Comment> comments;
-    private List<Tag> tags;
+    private List<Comment> comments = new ArrayList<>();
+    private List<Tag> tags =new ArrayList<>();
 
 
     public Post(long id, String title, String text, int likesCount) {

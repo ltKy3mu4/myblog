@@ -3,6 +3,7 @@ package ru.yandex.myblog.repository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import ru.yandex.myblog.model.domain.Post;
 
@@ -11,7 +12,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ContextConfiguration(classes = {JdbcPostRepository.class})
+@SpringBootTest(classes = {JdbcPostRepository.class})
 class JdbcPostRepositoryTest extends PostgresBaseIntegrationTest {
 
     @Autowired

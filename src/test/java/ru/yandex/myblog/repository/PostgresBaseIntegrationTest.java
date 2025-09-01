@@ -2,6 +2,8 @@ package ru.yandex.myblog.repository;
 
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.data.jdbc.AutoConfigureDataJdbc;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureJdbc;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.DynamicPropertyRegistry;
@@ -10,11 +12,9 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
-import ru.yandex.myblog.configuration.DataSourceConfiguration;
 
 @Testcontainers
-@ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {DataSourceConfiguration.class})
+@AutoConfigureJdbc
 public abstract class PostgresBaseIntegrationTest {
 
     @Autowired
