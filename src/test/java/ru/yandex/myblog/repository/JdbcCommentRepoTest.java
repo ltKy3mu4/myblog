@@ -3,6 +3,7 @@ package ru.yandex.myblog.repository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import ru.yandex.myblog.model.domain.Comment;
 
@@ -10,7 +11,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ContextConfiguration(classes = {JdbcCommentRepository.class})
+@SpringBootTest(classes = {JdbcCommentRepository.class})
 class JdbcCommentRepoTest extends PostgresBaseIntegrationTest {
 
     @Autowired
@@ -45,7 +46,7 @@ class JdbcCommentRepoTest extends PostgresBaseIntegrationTest {
                 )
         );
         assertEquals(1, comments.size());
-        assertEquals("New test comment", comments.getFirst().getText());
+        assertEquals("New test comment", comments.get(0).getText());
     }
 
     @Test

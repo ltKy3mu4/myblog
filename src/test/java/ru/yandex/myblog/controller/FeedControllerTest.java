@@ -15,6 +15,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.servlet.View;
@@ -24,26 +28,14 @@ import ru.yandex.myblog.model.mappers.PostMapper;
 import ru.yandex.myblog.model.mappers.PostMapperImpl;
 import ru.yandex.myblog.service.FeedService;
 
-@ExtendWith(MockitoExtension.class)
+@WebMvcTest(controllers = {FeedController.class, PostMapper.class})
 class FeedControllerTest {
 
+    @Autowired
     private MockMvc mockMvc;
 
-    @Mock
+    @MockitoBean
     private FeedService feedService;
-
-    @InjectMocks
-    private FeedController feedController;
-
-    @Spy
-    private PostMapper mapper = new PostMapperImpl();
-
-    @BeforeEach
-    void setUp() {
-        mockMvc = MockMvcBuilders.standaloneSetup(feedController)
-                .setViewResolvers((viewName, locale) -> mock(View.class))
-                .build();
-    }
 
     @Test
     void getFeed_ShouldReturnPostsViewWithDefaultParameters() throws Exception {

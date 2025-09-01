@@ -3,6 +3,7 @@ package ru.yandex.myblog.repository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.ContextConfiguration;
@@ -11,7 +12,7 @@ import ru.yandex.myblog.model.domain.ImageBlob;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ContextConfiguration(classes = {JdbcImageRepo.class})
+@SpringBootTest(classes = {JdbcImageRepo.class})
 class JdbcImageRepoTest extends PostgresBaseIntegrationTest {
 
     @Autowired
